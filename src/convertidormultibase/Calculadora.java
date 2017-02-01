@@ -167,7 +167,7 @@ public class Calculadora {
                         }
                         case Potencia:{
                             //se desea potenciar
-                            resultado = ConvertidorMultibase.potenciarNumero(Integer.parseInt(this.numero1.getValor()),Integer.parseInt(this.numero2.getValor()));
+                            resultado = Calculadora.potenciarNumero(Integer.parseInt(this.numero1.getValor()),Integer.parseInt(this.numero2.getValor()));
                             break;
                         }
                         case Logaritmo:{
@@ -180,10 +180,10 @@ public class Calculadora {
                             //meta significa el número que se quiere conseguir
                             int meta = Integer.parseInt(this.numero2.getValor());
                             //mientras que cuentaValores^contador < meta
-                            while(ConvertidorMultibase.potenciarNumero(cuentaValores, contador) < meta){
+                            while(Calculadora.potenciarNumero(cuentaValores, contador) < meta){
                                 contador++;
                             }
-                            if(ConvertidorMultibase.potenciarNumero(cuentaValores, contador)!=meta){
+                            if(Calculadora.potenciarNumero(cuentaValores, contador)!=meta){
                                 //significa que en el while se pasó, por lo cual no es un valor
                                 //conseguible en logaritmo
                                 return "No es logaritmo";
@@ -232,6 +232,22 @@ public class Calculadora {
         }//fin de else de validación de valores nulos en la calculadora
         return "";
     }//fin de método
+    
+    /**
+     * Este método lo que hace es potenciar un número
+     * @param base La base de la potencia
+     * @param exponente El exponente de la potencia
+     * @return Un entero representando el valor de la potencia
+     */
+    public static int potenciarNumero(int base,int exponente){
+        
+        int resultado = 1;
+        
+        for (int i = 0; i < exponente; i++) {
+            resultado *= base;
+        }
+        return resultado;
+    }
     
     public void limpiar(){
         this.baseSalida = 10;
