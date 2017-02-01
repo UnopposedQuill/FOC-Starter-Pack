@@ -234,7 +234,7 @@ public class Numero {
         //un for inverso para la lista que es la conversión final
         for (int i = 0; i < numeroEntero.size(); i++) {
             int get = numeroEntero.get(i);
-            int potencia = ConvertidorMultibase.potenciarNumero(this.base, cuentaEspacio);
+            int potencia = Calculadora.potenciarNumero(this.base, cuentaEspacio);
             
             
             //Estos prints son para validar lo que va saliendo de la conversión
