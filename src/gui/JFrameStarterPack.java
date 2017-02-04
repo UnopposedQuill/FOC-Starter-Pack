@@ -543,7 +543,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
         }
         //si la operación deseada era de conversión, sólo se necesita un operando   
         System.out.println(this.ComboBoxProcedimiento.getSelectedItem().toString());
-        if(this.ComboBoxProcedimiento.getSelectedItem().toString().equals("Conversion") && !this.Numero1.getText().equals("") && !this.baseNumero2.getText().equals("") && this.baseNumero2.getText().equals("") && this.Numero2.getText().equals("")){
+        if(this.ComboBoxProcedimiento.getSelectedItem().toString().equals("Conversion") && !this.Numero1.getText().equals("") && !this.baseNumero1.getText().equals("") && this.baseNumero2.getText().equals("") && this.Numero2.getText().equals("")){
             try{
                 this.calculadora.ingresarProcedimiento(Procedimiento.Conversion, new Numero(Integer.parseInt(this.baseNumero1.getText()),this.Numero1.getText()), null, Integer.parseInt(Destino.getText()));
                 Error.setVisible(false);
