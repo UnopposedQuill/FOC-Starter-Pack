@@ -386,9 +386,6 @@ public class Numero {
         }
         this.valor = String.copyValueOf(arregloResultado);
         this.base = nuevaBase;
-        
-        
-        
     }
     
     /**
