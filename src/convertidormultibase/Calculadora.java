@@ -5,8 +5,7 @@
  */
 package convertidormultibase;
 
-import com.sun.istack.internal.logging.Logger;
-import java.util.logging.Level;
+import java.util.logging.*;
 
 /**
  *
@@ -216,7 +215,7 @@ public class Calculadora {
                                 System.out.println(salida.toString());
                                 return salida.getValor();
                             }catch(DigitOutOfBaseBoundsException exc){
-                                Logger.getLogger(Calculadora.class).log(Level.SEVERE, null, exc);
+                                Logger.getLogger(Calculadora.class.getName()).log(Level.SEVERE, null, exc);
                             }
                         }
                         else{

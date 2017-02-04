@@ -5,12 +5,11 @@
  */
 package gui;
 
-import com.sun.istack.internal.logging.Logger;
 import convertidormultibase.*;
 import McQuinnator.*;
 import Automatizador.*;
 import java.awt.event.KeyEvent;
-import java.util.logging.Level;
+import java.util.logging.*;
 
 /**
  *
@@ -535,7 +534,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
                 this.calculadora.ingresarProcedimiento(Procedimiento.MaximaCapacidadBase,null, null, Integer.parseInt(this.Destino.getText()));
                 Error.setVisible(false);
             }catch(NumberFormatException exc){
-                Logger.getLogger(Calculadora.class).log(Level.SEVERE, null, exc);
+                Logger.getLogger(Calculadora.class.getName()).log(Level.SEVERE, null, exc);
                 this.Error.setVisible(true);
                 this.valorResultado.setText("");
             }
@@ -549,7 +548,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
                 this.calculadora.ingresarProcedimiento(Procedimiento.Conversion, new Numero(Integer.parseInt(this.baseNumero1.getText()),this.Numero1.getText()), null, Integer.parseInt(Destino.getText()));
                 Error.setVisible(false);
             }catch(DigitOutOfBaseBoundsException | NumberFormatException exc){
-                Logger.getLogger(Calculadora.class).log(Level.SEVERE, null, exc);
+                Logger.getLogger(Calculadora.class.getName()).log(Level.SEVERE, null, exc);
                 this.Error.setVisible(true);
                 this.valorResultado.setText("");
             }
@@ -561,7 +560,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
             this.calculadora.ingresarProcedimiento(Procedimiento.valueOf(this.ComboBoxProcedimiento.getSelectedItem().toString()), new Numero(Integer.parseInt(baseNumero1.getText()),Numero1.getText()), new Numero(Integer.parseInt(baseNumero2.getText()),Numero2.getText()), Integer.parseInt(Destino.getText()));
             Error.setVisible(false);
         }catch(DigitOutOfBaseBoundsException | NumberFormatException ex){//este es que el usuario se cagó en el sistema
-            Logger.getLogger(Calculadora.class).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Calculadora.class.getName()).log(Level.SEVERE, null, ex);
             //hace visible el label en caso de que el usuario ingrese una idiotez jaja
             this.Error.setVisible(true);
             this.valorResultado.setText("");

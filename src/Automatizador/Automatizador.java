@@ -5,10 +5,9 @@
  */
 package Automatizador;
 
-import com.sun.istack.internal.logging.Logger;
 import convertidormultibase.DigitOutOfBaseBoundsException;
 import convertidormultibase.Numero;
-import java.util.logging.Level;
+import java.util.logging.*;
 
 /**
  * Esta clase sabe cómo sacar las transiciones matemáticamente de un autómata divisor
@@ -56,7 +55,7 @@ public class Automatizador {
                     //ahora le junto el estado al que se supone que va
                     resultado = resultado.concat("q" + (String.valueOf((i*this.baseADividir+j)%divisor)) + "\n");
                 }catch(DigitOutOfBaseBoundsException exc){
-                    Logger.getLogger(Automatizador.class).log(Level.SEVERE, null, exc);
+                    Logger.getLogger(Automatizador.class.getName()).log(Level.SEVERE, null, exc);
                 }
             }
             resultado = resultado.concat("------------------------------------------------------------------------------------\n");
