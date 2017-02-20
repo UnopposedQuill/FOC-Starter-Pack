@@ -531,7 +531,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
         //si se desea calcular el máximo dígito para una base, entra aquí, pues no necesita operandos, sólo el destino
         if(this.ComboBoxProcedimiento.getSelectedItem().toString().equals("MaximaCapacidadBase") && !this.Destino.getText().equals("")){
             try{
-                this.calculadora.ingresarProcedimiento(Procedimiento.MaximaCapacidadBase,null, null, Integer.parseInt(this.Destino.getText()));
+                this.calculadora.ingresarProcedimiento(Procedimiento.MaximaCapacidadBase,null, null, Integer.parseInt(this.Destino.getText().trim()));
                 Error.setVisible(false);
             }catch(NumberFormatException exc){
                 Logger.getLogger(Calculadora.class.getName()).log(Level.SEVERE, null, exc);
@@ -543,9 +543,9 @@ public class JFrameStarterPack extends javax.swing.JFrame {
         }
         //si la operación deseada era de conversión, sólo se necesita un operando   
         System.out.println(this.ComboBoxProcedimiento.getSelectedItem().toString());
-        if(this.ComboBoxProcedimiento.getSelectedItem().toString().equals("Conversion") && !this.Numero1.getText().equals("") && !this.baseNumero1.getText().equals("") && this.baseNumero2.getText().equals("") && this.Numero2.getText().equals("")){
+        if(this.ComboBoxProcedimiento.getSelectedItem().toString().equals("Conversion") && !this.Numero1.getText().trim().equals("") && !this.baseNumero1.getText().trim().equals("") && this.baseNumero2.getText().trim().equals("") && this.Numero2.getText().trim().equals("")){
             try{
-                this.calculadora.ingresarProcedimiento(Procedimiento.Conversion, new Numero(Integer.parseInt(this.baseNumero1.getText()),this.Numero1.getText()), null, Integer.parseInt(Destino.getText()));
+                this.calculadora.ingresarProcedimiento(Procedimiento.Conversion, new Numero(Integer.parseInt(this.baseNumero1.getText().trim()),this.Numero1.getText().trim()), null, Integer.parseInt(Destino.getText().trim()));
                 Error.setVisible(false);
             }catch(DigitOutOfBaseBoundsException | NumberFormatException exc){
                 Logger.getLogger(Calculadora.class.getName()).log(Level.SEVERE, null, exc);
@@ -557,7 +557,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
         //si llega hasta aquí significa que la operación deseada sí necesita ambos operandos
         try{
             //ingresa la información de los labels a la calculadora
-            this.calculadora.ingresarProcedimiento(Procedimiento.valueOf(this.ComboBoxProcedimiento.getSelectedItem().toString()), new Numero(Integer.parseInt(baseNumero1.getText()),Numero1.getText()), new Numero(Integer.parseInt(baseNumero2.getText()),Numero2.getText()), Integer.parseInt(Destino.getText()));
+            this.calculadora.ingresarProcedimiento(Procedimiento.valueOf(this.ComboBoxProcedimiento.getSelectedItem().toString()), new Numero(Integer.parseInt(baseNumero1.getText().trim()),Numero1.getText().trim()), new Numero(Integer.parseInt(baseNumero2.getText().trim()),Numero2.getText().trim()), Integer.parseInt(Destino.getText().trim()));
             Error.setVisible(false);
         }catch(DigitOutOfBaseBoundsException | NumberFormatException ex){//este es que el usuario se cagó en el sistema
             Logger.getLogger(Calculadora.class.getName()).log(Level.SEVERE, null, ex);

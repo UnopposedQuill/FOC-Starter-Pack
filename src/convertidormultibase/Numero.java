@@ -67,7 +67,7 @@ public class Numero {
             */
             if(get == 39){
                 //creo una nueva lista para almacenar temporalmente todos los caracteres del dígito compuesto
-                ArrayList <Character> digitosAVerificar = new ArrayList();
+                ArrayList <Character> digitosAVerificar = new ArrayList<>();
                 digitosAVerificar.add(valor.charAt(i-1));//agrego la letra que encabeza el dígito compuesto
                 try{
                     while(valor.charAt(i) == 39){//mientras el dígito sea igual a un <'>, avance agregándole el caracter a la lista a verificar
@@ -167,7 +167,7 @@ public class Numero {
     
     //este método SÓLO debe llamarse mediante cambiarBase, por lo cual lo puse privado
     private void metodoGeneral() {
-        ArrayList <Character> numero = new ArrayList();
+        ArrayList <Character> numero = new ArrayList<>();
         for (int i = 0; i < this.valor.length(); i++) {
             numero.add(this.valor.charAt(i));
         }
@@ -182,7 +182,7 @@ public class Numero {
         */
         
         //La función de este arraylist será contener el conjunto de números enteros que representan los números y letras recibidos
-        ArrayList <Integer> numeroEntero= new ArrayList();
+        ArrayList <Integer> numeroEntero= new ArrayList<>();
         
         //Un bello for inverso
         for (int i = numero.size()-1; i >= 0; i--) {
@@ -268,7 +268,7 @@ public class Numero {
         no hubo error al parsear el entero
         variable que conservará cada dígito conforme se va consiguiendo, cada dígito se guarda como entero en base 10 y luego se convierte
         */
-        ArrayList <Integer> digitos = new ArrayList();
+        ArrayList <Integer> digitos = new ArrayList<>();
 
         /*
         recordar número parseado hace algunas líneas
@@ -296,7 +296,7 @@ public class Numero {
         }
 
         //Este ArrayList va a conseguir los dígitos en orden y los va a pasar a caracteres de una vez
-        ArrayList <Character> resultado = new ArrayList();
+        ArrayList <Character> resultado = new ArrayList<>();
 
         //bello for inverso
         for (int i = digitos.size()-1; i >= 0; i--) {
