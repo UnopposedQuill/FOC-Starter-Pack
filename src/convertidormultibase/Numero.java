@@ -255,11 +255,11 @@ public class Numero {
     //este método SÓLO debe llamarse mediante cambiarBase, por lo cual lo puse privado
     private void metodoDivision(int nuevaBase) {
         
-        int numero = 0;
+        long numero = 0;
         //la base se supone que debería ser 10, pero por si acaso pongo esto con un catch
         //hago un parse int al número
         try{
-            numero = Integer.parseInt(this.valor);
+            numero = Long.parseLong(this.valor);
         }catch(NumberFormatException ex){
             System.out.println("El número logró burlar las defensas");
             throw ex;
@@ -268,7 +268,7 @@ public class Numero {
         no hubo error al parsear el entero
         variable que conservará cada dígito conforme se va consiguiendo, cada dígito se guarda como entero en base 10 y luego se convierte
         */
-        ArrayList <Integer> digitos = new ArrayList<>();
+        ArrayList <Long> digitos = new ArrayList<>();
 
         /*
         recordar número parseado hace algunas líneas
@@ -291,7 +291,7 @@ public class Numero {
 
         System.out.println("Digitos parseados:");
         for (int i = 0; i < digitos.size(); i++) {
-            Integer get = digitos.get(i);
+            Long get = digitos.get(i);
             System.out.println("\tDígito parseado: " + get);
         }
 
@@ -300,7 +300,7 @@ public class Numero {
 
         //bello for inverso
         for (int i = digitos.size()-1; i >= 0; i--) {
-            Integer get = digitos.get(i);
+            Long get = digitos.get(i);
 
             //imprime qué es lo que pilla
             System.out.println("get: "+get);
@@ -346,7 +346,7 @@ public class Numero {
                     get -= 10;
 
                     //consigueTechos busca la cantidad de techos que puede llegar a representar ese número
-                    int consigueTechos = get / 26;
+                    Long consigueTechos = get / 26;
 
                     //se convierte el get a una sola letra, mientras que la cantidad de techos que la acompañaban ahora estarán en una nueva variable
                     get %= 26;
