@@ -11,13 +11,12 @@ package McQuinnator;
  */
 public class Fase2 {
     
-    private Fase1 fase1AProcesar;
-    private TablaPrimos tablaEsenciales;
+    private final Fase1 fase1AProcesar;
+    private final TablaPrimos tablaEsenciales;
     
     public Fase2(Fase1 fase1Nueva){
         this.fase1AProcesar = fase1Nueva;
         this.tablaEsenciales = new TablaPrimos(this.fase1AProcesar);
-        
     }
     
     public Fase2(String funcionK){

@@ -106,18 +106,33 @@ public class JFrameStarterPack extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Segundo Número");
 
+        Numero1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Numero1FocusGained(evt);
+            }
+        });
         Numero1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Numero1KeyTyped(evt);
             }
         });
 
+        baseNumero1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                baseNumero1FocusGained(evt);
+            }
+        });
         baseNumero1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 baseNumero1KeyTyped(evt);
             }
         });
 
+        Numero2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Numero2FocusGained(evt);
+            }
+        });
         Numero2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Numero2KeyTyped(evt);
@@ -127,6 +142,11 @@ public class JFrameStarterPack extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Base del Primer Número");
 
+        baseNumero2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                baseNumero2FocusGained(evt);
+            }
+        });
         baseNumero2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 baseNumero2KeyTyped(evt);
@@ -137,10 +157,20 @@ public class JFrameStarterPack extends javax.swing.JFrame {
         jLabel6.setText("Base del Segundo Número");
 
         ComboBoxProcedimiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Conversion", "Suma", "Resta", "Division", "Residuo", "Multiplicacion", "Potencia", "Logaritmo", "MaximaCapacidadBase" }));
+        ComboBoxProcedimiento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ComboBoxProcedimientoFocusGained(evt);
+            }
+        });
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Base del Destino");
 
+        Destino.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                DestinoFocusGained(evt);
+            }
+        });
         Destino.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 DestinoKeyTyped(evt);
@@ -667,6 +697,8 @@ public class JFrameStarterPack extends javax.swing.JFrame {
 
     private void baseNumero2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_baseNumero2KeyTyped
         // TODO add your handling code here:
+        
+        this.Error.setVisible(false);
         char capturaTecla = evt.getKeyChar();
         
         if(capturaTecla == KeyEvent.VK_ENTER){
@@ -684,7 +716,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
     private void Numero1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Numero1KeyTyped
         // TODO add your handling code here:
         char capturaTecla = evt.getKeyChar();
-        
+        this.Error.setVisible(false);
         if(capturaTecla == KeyEvent.VK_ENTER){
             this.ingresar.doClick();
             this.calcular.doClick();
@@ -699,7 +731,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
     private void baseNumero1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_baseNumero1KeyTyped
         // TODO add your handling code here:
         char capturaTecla = evt.getKeyChar();
-        
+        this.Error.setVisible(false);
         if(capturaTecla == KeyEvent.VK_ENTER){
             this.ingresar.doClick();
             this.calcular.doClick();
@@ -714,7 +746,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
     private void DestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DestinoKeyTyped
         // TODO add your handling code here:
         char capturaTecla = evt.getKeyChar();
-        
+        this.Error.setVisible(false);
         if(capturaTecla == KeyEvent.VK_ENTER){
             this.ingresar.doClick();
             this.calcular.doClick();
@@ -729,7 +761,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
     private void Numero2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Numero2KeyTyped
         // TODO add your handling code here:
         char capturaTecla = evt.getKeyChar();
-        
+        this.Error.setVisible(false);
         if(capturaTecla == KeyEvent.VK_ENTER){
             this.ingresar.doClick();
             this.calcular.doClick();
@@ -740,6 +772,36 @@ public class JFrameStarterPack extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_Numero2KeyTyped
+
+    private void Numero1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Numero1FocusGained
+        // TODO add your handling code here:
+        this.Error.setVisible(false);
+    }//GEN-LAST:event_Numero1FocusGained
+
+    private void baseNumero1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_baseNumero1FocusGained
+        // TODO add your handling code here:
+        this.Error.setVisible(false);
+    }//GEN-LAST:event_baseNumero1FocusGained
+
+    private void ComboBoxProcedimientoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ComboBoxProcedimientoFocusGained
+        // TODO add your handling code here:
+        this.Error.setVisible(false);
+    }//GEN-LAST:event_ComboBoxProcedimientoFocusGained
+
+    private void DestinoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DestinoFocusGained
+        // TODO add your handling code here:
+        this.Error.setVisible(false);
+    }//GEN-LAST:event_DestinoFocusGained
+
+    private void Numero2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Numero2FocusGained
+        // TODO add your handling code here:
+        this.Error.setVisible(false);
+    }//GEN-LAST:event_Numero2FocusGained
+
+    private void baseNumero2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_baseNumero2FocusGained
+        // TODO add your handling code here:
+        this.Error.setVisible(false);
+    }//GEN-LAST:event_baseNumero2FocusGained
 
     /**
      * @param args the command line arguments
