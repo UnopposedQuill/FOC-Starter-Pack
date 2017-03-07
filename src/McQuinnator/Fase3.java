@@ -22,7 +22,7 @@ public class Fase3 {
 
     @Override
     public String toString() {
-        
+
         return "Fase3{" + "fase2AProcesar=" + fase2AProcesar + '}';
     }
     

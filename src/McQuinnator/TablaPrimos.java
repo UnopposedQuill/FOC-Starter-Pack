@@ -26,10 +26,12 @@ public class TablaPrimos {
      
     public DefaultTableModel toTabla(){
 
-        //la fila es el primer corchete
-        //Los términos primos no serán graficados de la misma manera en la que grafiqué las tablas
-        //En lugar de eso serán graficados en una tabla similar a la que usa excel
-        //En esta tabla los términos serán las filas y los términos originales serán las columnas
+        /*
+        la fila es el primer corchete
+        Los términos primos no serán graficados de la misma manera en la que grafiqué las tablas
+        En lugar de eso serán graficados en una tabla similar a la que usa excel
+        En esta tabla los términos serán las filas y los términos originales serán las columnas
+        */
         Object[][] tablaTerminos = new Object[terminosPrimosPropios.size()][terminosOriginales.size()+1];
         
         //Recorrer cada una de las casillas que acabo de crear, llenándolas a discreción
