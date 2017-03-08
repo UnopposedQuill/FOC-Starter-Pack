@@ -14,14 +14,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TablaPrimos {
     
-    private Fase1 fase1Propia;
-    private ArrayList<Termino> terminosPrimosPropios;
-    private ArrayList<Integer> terminosOriginales;
+    private final Fase1 fase1Propia;
+    private final ArrayList<Termino> terminosPrimosPropios;
+    private final ArrayList<Integer> terminosOriginales;
     
-    public TablaPrimos(Fase1 faseAImplementar) {
-        this.fase1Propia = faseAImplementar;
-        this.terminosOriginales = faseAImplementar.getTerminosOriginales();
-        this.terminosPrimosPropios = faseAImplementar.getPrimos();
+    public TablaPrimos(Fase1 fase1AImplementar) {
+        this.fase1Propia = fase1AImplementar;
+        this.terminosOriginales = fase1AImplementar.getTerminosOriginales();
+        this.terminosPrimosPropios = fase1AImplementar.getPrimos();
     }
      
     public DefaultTableModel toTabla(){
@@ -84,5 +84,9 @@ public class TablaPrimos {
             salida = salida + get.toString() + "\n";
         }
         return salida;
+    }
+
+    public ArrayList<Termino> getTerminosPrimosPropios() {
+        return terminosPrimosPropios;
     }
 }

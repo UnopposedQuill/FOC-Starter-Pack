@@ -34,7 +34,11 @@ public class Termino {
         this.diferencia = "";
         this.equisado = false;
     }
-
+    
+    /**
+     * Este método retorna todos los números que pertenecen al término dentro de un ArrayList
+     * @return Un ArrayList conteniendo todos los números del término
+     */
     public ArrayList<Integer> getNumeros() {
         return numeros;
     }
