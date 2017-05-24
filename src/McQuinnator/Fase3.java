@@ -47,7 +47,12 @@ public class Fase3 {
             for (int j = 0; j < getTermino.size(); j++) {
                 String getNumerosTermino = getTermino.get(j);
                 //ahora ya estoy comparando los números de los términos
-                
+                for (int k = 0; k < getNumerosTermino.length(); k++) {
+                    char get = getNumerosTermino.charAt(k);
+                    if(get != comparador && k != 0){
+                        comparador = 0;
+                    }
+                }
             }
         }
         return "Fase3{" + "fase2AProcesar=" + fase2AProcesar + '}';
