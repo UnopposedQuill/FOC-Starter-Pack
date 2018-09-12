@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Esta clase contiene los términos primos que quedan al realizar la segunda fase del
+ * Quine-McClusky
  * @author Esteban
  */
 public class TablaPrimos {
@@ -24,6 +25,11 @@ public class TablaPrimos {
         this.terminosPrimosPropios = fase1AImplementar.getPrimos();
     }
      
+    /**
+     * Método no usado, la idea era hacer que se pudieran visualizar todos 
+     * los términos en una interfaz similar a una tabla de cálculo
+     * @return Un modelo dentro del cual se colocan los datos internos de la tabla
+     */
     public DefaultTableModel toTabla(){
 
         /*
@@ -86,6 +92,11 @@ public class TablaPrimos {
         return salida;
     }
 
+    /**
+     * Retorna los términos contenidos dentro de esta tabla
+     * @return Un ArrayList de {@link Termino} que representa todos los términos
+     * de esta tabla
+     */
     public ArrayList<Termino> getTerminosPrimosPropios() {
         return terminosPrimosPropios;
     }

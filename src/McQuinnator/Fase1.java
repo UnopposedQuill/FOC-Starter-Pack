@@ -311,10 +311,10 @@ public class Fase1 {
         }//final del for para recorrer los niveles, cuando este termina, se ha terminado la tabla completa
         //hago la nueva tabla
         if(this.tablas.add(new Tabla(nivelesNuevos))){
-            System.out.println("Creada una nueva tabla sin problemas :)");
+            System.out.println("Creada una nueva tabla sin problemas");
         }
         else{
-            System.out.println("Algo malo pasó al final :(");
+            System.out.println("Algo malo pasó al final");
         }
     }
 

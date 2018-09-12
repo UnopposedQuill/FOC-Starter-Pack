@@ -8,7 +8,8 @@ package McQuinnator;
 import java.util.*;
 
 /**
- *
+ * Esta clase contiene los datos necesarios para poder calcular la información
+ * de la tercera fase del algoritmo de Quine McCluskey.
  * @author esteban
  */
 public class Fase3 {
@@ -59,6 +60,32 @@ public class Fase3 {
     }
 
     public String funcionResultante(){
-        return "";
+        String resultado = "F = ";
+        for (int i = 0; i < this.fase2AProcesar.getTablaEsenciales().getTerminosPrimosPropios().size(); i++) {
+            Termino getTermino = this.fase2AProcesar.getTablaEsenciales().getTerminosPrimosPropios().get(i);
+            String terminoEnBinario = Integer.toBinaryString(getTermino.getNumeros().get(0));
+            //necesito este booleano para saber si los valores del mismo bit son diferentes
+            //en caso de serlo, no coloco la variable
+            boolean diferente = false;
+            
+            for (int j = 0; j < this.fase2AProcesar.getFase1AProcesar().getCantidadBits(); j++) {
+                String letraAAgregar = String.valueOf((char) ('A' + j));
+                if(terminoEnBinario.charAt(0) == '0'){
+                    letraAAgregar = letraAAgregar.concat("'");
+                }
+                for (int k = 1; k < getTermino.getNumeros().size() && !diferente; k++) {
+                    Integer getNumero = getTermino.getNumeros().get(j);
+                    String terminoEnBinarioComparador = Integer.toBinaryString(getNumero);
+                    if(terminoEnBinario.charAt(j) != terminoEnBinarioComparador.charAt(j)){
+                        diferente = true;
+                    }
+                }
+                if(!diferente){
+                    resultado = resultado.concat(letraAAgregar);
+                }
+            }
+            resultado = resultado.concat("+");
+        }
+        return resultado;
     }
 }
