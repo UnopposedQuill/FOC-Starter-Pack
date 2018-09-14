@@ -299,6 +299,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Ingrese la función: ");
 
+        Entrada.setText("E4:(0,1,2,4,5,6,7,9,10,11,12,14,15)");
         Entrada.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 EntradaKeyTyped(evt);
@@ -786,8 +787,9 @@ public class JFrameStarterPack extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(this.fase3 != null){
             if(this.tablaActual != -3){
-                this.TextAreaTabla.setText(this.fase3.funcionResultante());
-                this.tablaActual = -1;
+                //this.TextAreaTabla.setText(this.fase3.funcionResultante());//legado de una versión anterior
+                this.TextAreaTabla.setText(this.fase3.toString());
+                this.tablaActual = -3;
             }
             else{
                 this.tablaActual = 0;

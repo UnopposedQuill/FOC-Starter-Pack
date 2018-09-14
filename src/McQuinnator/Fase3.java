@@ -27,37 +27,66 @@ public class Fase3 {
     @Override
     public String toString() {
         //tengo que recorrer todos los términos primos que posea la fase 2, y pasarlos a binario
-        ArrayList <ArrayList<String>> arrayLBinarios = new ArrayList<>();
+        String resultado = "Fase 3:",
+               funcionResultante = "F = ",
+               letrasPorTermino;
+        //tengo que recorrer todos los términos propios que quedaron al final de la segunda fase
         for (int i = 0; i < this.fase2AProcesar.getTablaEsenciales().getTerminosPrimosPropios().size(); i++) {
             Termino getTermino = this.fase2AProcesar.getTablaEsenciales().getTerminosPrimosPropios().get(i);
-            ArrayList <String> binariosTermino = new ArrayList<>();//creo la lista que poseerá los strings del término
-            for (int j = 0; j < getTermino.getNumeros().size(); j++) {
-                Integer get = getTermino.getNumeros().get(j);
-                String binarioAPasar = Integer.toBinaryString(get);
-                for (int k = 0; k < Math.abs(this.fase2AProcesar.getFase1AProcesar().getCantidadBits()-binarioAPasar.length()); k++) {
-                    binarioAPasar = "0".concat(binarioAPasar);
-                }
-                binariosTermino.add(Integer.toBinaryString(get));
+            String terminoEnBinario = Integer.toBinaryString(getTermino.getNumeros().get(0));
+            letrasPorTermino = "";
+            //si dio una string más pequeña de lo que necesito, tengo que rellenar con ceros a la izquierda
+            while(terminoEnBinario.length() < this.fase2AProcesar.getFase1AProcesar().getCantidadBits()){
+                terminoEnBinario = "0".concat(terminoEnBinario);
             }
-            arrayLBinarios.add(binariosTermino);
-        }
-        for (int i = 0; i < arrayLBinarios.size(); i++) {
-            ArrayList <String> getTermino = arrayLBinarios.get(i);
-            //ahora tengo que recorrer todos términos de la tabla, revisando los bits que sean diferentes
-            //si son iguales, agrego la letra con el negado según corresponda
-            char comparador = '0';//este será el que comparará el entero con el anterior
-            for (int j = 0; j < getTermino.size(); j++) {
-                String getNumerosTermino = getTermino.get(j);
-                //ahora ya estoy comparando los números de los términos
-                for (int k = 0; k < getNumerosTermino.length(); k++) {
-                    char get = getNumerosTermino.charAt(k);
-                    if(get != comparador && k != 0){
-                        comparador = 0;
+            resultado = resultado.concat("\nTérmino: " + getTermino.numerosAString() + "\n");
+            //necesito este booleano para saber si los valores del mismo bit son diferentes
+            //en caso de serlo, no coloco la variable
+            boolean diferente;
+            
+            for (int j = 0; j < this.fase2AProcesar.getFase1AProcesar().getCantidadBits(); j++) {
+                diferente = false;
+                String letraAAgregar = String.valueOf((char) ('A' + j));
+                if(terminoEnBinario.charAt(j) == '0'){
+                    letraAAgregar = letraAAgregar.concat("'");
+                }
+                for (int k = 1; k < getTermino.getNumeros().size() && !diferente; k++) {
+                    Integer getNumero = getTermino.getNumeros().get(k);
+                    String terminoEnBinarioComparador = Integer.toBinaryString(getNumero);
+                    //si dio una string más pequeña de lo que necesito, tengo que rellenar con ceros a la izquierda
+                    while(terminoEnBinarioComparador.length() < this.fase2AProcesar.getFase1AProcesar().getCantidadBits()){
+                        terminoEnBinarioComparador = "0".concat(terminoEnBinarioComparador);
+                    }
+                    
+                    if(terminoEnBinario.charAt(j) != terminoEnBinarioComparador.charAt(j)){
+                        diferente = true;
                     }
                 }
+                if(!diferente){
+                    funcionResultante = funcionResultante.concat(letraAAgregar);
+                    letrasPorTermino = letrasPorTermino.concat(letraAAgregar);
+                }
+                else{
+                    letrasPorTermino = letrasPorTermino.concat("X");
+                }
             }
+            for (Integer numero : getTermino.getNumeros()) {
+                String numeroBinario = Integer.toBinaryString(numero);
+                while(numeroBinario.length() < this.fase2AProcesar.getFase1AProcesar().getCantidadBits()){
+                    numeroBinario = "0".concat(numeroBinario);
+                }
+                resultado = resultado.concat(numeroBinario + "\n");
+            }
+            
+            funcionResultante = funcionResultante.concat("+");
+            for (int j = 0; j < 3 * this.fase2AProcesar.getFase1AProcesar().getCantidadBits(); j++) {
+                resultado = resultado.concat("-");
+            }
+            resultado = resultado.concat("\n" + letrasPorTermino + "\n");
         }
-        return "Fase3{" + "fase2AProcesar=" + fase2AProcesar + '}';
+        
+        
+        return resultado.concat("\nFunción Resultante:\n" + funcionResultante.substring(0, funcionResultante.length()-1));
     }
 
     public String funcionResultante(){
@@ -100,6 +129,6 @@ public class Fase3 {
             }
             resultado = resultado.concat("+");
         }
-        return resultado;
+        return resultado.substring(0, resultado.length()-1);
     }
 }
