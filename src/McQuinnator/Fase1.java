@@ -66,7 +66,7 @@ public class Fase1 {
         
         //el nuevo arrayL para almacenar todos los términos
         ArrayList <Termino> terminosDeLaPrimeraTabla = new ArrayList<>();
-        ArrayList <Integer> terminosOriginalesATomar = new ArrayList<>();
+        this.terminosOriginales = new ArrayList<>();
         //ahora reinicio el contador para leer a partir de la primera letra, que es el inicio del primer número
         i = 0;
         //mientras sea diferente de un ")", lo que significa que llegó al final
@@ -79,20 +79,8 @@ public class Fase1 {
             }
             //ya se encontró con un ',', lo que significa que ya tengo el número completo del término
             try{
-                if(!terminosDeLaPrimeraTabla.add(new Termino(Integer.parseInt(restoAProcesar.substring(0, i))))){
-                    //no logró meterlo
-                    System.out.println("Por algún motivo no se rompió, pero no pudo meterlo");
-                }
-                else{
-                    System.out.println("Pudo meter correctamente el: " + restoAProcesar.substring(0,i));
-                    System.out.println("Y falta por procesar: " + restoAProcesar.substring(i));
-                    if(!terminosOriginalesATomar.add(Integer.parseInt(restoAProcesar.substring(0,i)))){
-                        System.out.println("Por algún motivo sí se logró introducir el término a la tabla, pero no a los términos originales");
-                    }
-                    else{
-                        System.out.println("Introducido correctamente en ambos");
-                    }
-                }
+                terminosDeLaPrimeraTabla.add(new Termino(Integer.parseInt(restoAProcesar.substring(0, i))));
+                this.terminosOriginales.add(Integer.parseInt(restoAProcesar.substring(0,i)));
             }catch(NumberFormatException exc){
                 System.out.println("Error al parsear el string: " + restoAProcesar.substring(0, i));
             }
@@ -113,9 +101,6 @@ public class Fase1 {
         
         //ahora a acomodar los términos
         for (int j = 0; j < terminosDeLaPrimeraTabla.size(); j++) {
-            
-            //Un print de control
-            //System.out.println(terminosDeLaPrimeraTabla.get(j).getNumeros().get(0));
             //ahora a recorrer los niveles
             for (int k = 0; k < niveles.size(); k++) {
                 //consigue el término que esté al inicio del arrayList
@@ -131,8 +116,6 @@ public class Fase1 {
         //agrega las tablas a la fase
         this.tablas = new ArrayList<>();
         this.tablas.add(new Tabla(niveles));
-        
-        //y ahora los términos de la función original
     }
 
     public ArrayList<Tabla> getTablas() {
@@ -203,21 +186,18 @@ public class Fase1 {
                 for (int k = 0; k < getNivel.getTerminos().size(); k++) {
                     Termino getTermino = getNivel.getTerminos().get(k);
                     
-                    System.out.print(getTermino.toString() + "\t");
                     //si no está equisado
                     if(!getTermino.equisado()){
                         //ahora tengo que averiguar si no hay un término que contenga los mismos números ya ingresado
                         //para esto llamo a la función estática
                         if(!isContained(terminosPrimos, getTermino)){
                             //no hay un término primo ya existente que lo contuviera, por lo que se agrega
-                            System.out.println("X");
                             terminosPrimos.add(getTermino);
                         }
                     }   
                 }
             }    
         }
-        System.out.println("");
         return terminosPrimos;
     }
     
@@ -310,12 +290,7 @@ public class Fase1 {
             }//final del for para recorrer los términos del nivel bajo, así que seguirá con el siguiente nivel
         }//final del for para recorrer los niveles, cuando este termina, se ha terminado la tabla completa
         //hago la nueva tabla
-        if(this.tablas.add(new Tabla(nivelesNuevos))){
-            System.out.println("Creada una nueva tabla sin problemas");
-        }
-        else{
-            System.out.println("Algo malo pasó al final");
-        }
+        this.tablas.add(new Tabla(nivelesNuevos));
     }
 
     @Override

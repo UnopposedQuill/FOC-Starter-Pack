@@ -18,7 +18,7 @@ import java.util.logging.*;
 public class JFrameStarterPack extends javax.swing.JFrame {
 
     private final Calculadora calculadora;
-    private Fase2 fase2;
+    private Fase3 fase3;
     private int tablaActual = 0;
     
     /**
@@ -26,7 +26,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
      */
     public JFrameStarterPack() {
         this.calculadora = new Calculadora();
-        this.fase2 = null;
+        this.fase3 = null;
         initComponents();
         this.Error.setVisible(false);
     }
@@ -73,6 +73,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
         BotonTPrimosColapsados = new javax.swing.JButton();
         Derecha = new javax.swing.JButton();
         BotonTPrimosNoColapsados = new javax.swing.JButton();
+        botonResultadoFinal = new javax.swing.JButton();
         Creador = new javax.swing.JButton();
         automatizerPanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -264,10 +265,11 @@ public class JFrameStarterPack extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(omnibaserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(baseNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(baseNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Destino, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(omnibaserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Destino, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(omnibaserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(baseNumero2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(baseNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(omnibaserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(omnibaserPanelLayout.createSequentialGroup()
@@ -346,6 +348,13 @@ public class JFrameStarterPack extends javax.swing.JFrame {
             }
         });
 
+        botonResultadoFinal.setText("Función Resultante");
+        botonResultadoFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonResultadoFinalActionPerformed(evt);
+            }
+        });
+
         Creador.setText("Hacer Tablas");
         Creador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,14 +378,16 @@ public class JFrameStarterPack extends javax.swing.JFrame {
                             .addComponent(FuncionAnterior)
                             .addComponent(Entrada)))
                     .addGroup(mcquinnatorPanelLayout.createSequentialGroup()
-                        .addGroup(mcquinnatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NumeroTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BotonTPrimosNoColapsados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BotonTPrimosColapsados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CantidadTablas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Izquierda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Derecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Creador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(mcquinnatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mcquinnatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(NumeroTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BotonTPrimosNoColapsados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BotonTPrimosColapsados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CantidadTablas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Izquierda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Derecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Creador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(botonResultadoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(outputTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -404,12 +415,14 @@ public class JFrameStarterPack extends javax.swing.JFrame {
                         .addComponent(BotonTPrimosColapsados)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotonTPrimosNoColapsados)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonResultadoFinal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                         .addComponent(NumeroTabla)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CantidadTablas))
                     .addComponent(outputTableScrollPane))
-                .addGap(25, 25, 25))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("McQuinnator", mcquinnatorPanel);
@@ -498,7 +511,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Automatizador", automatizerPanel);
@@ -700,61 +713,62 @@ public class JFrameStarterPack extends javax.swing.JFrame {
     private void CreadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreadorActionPerformed
         // TODO add your handling code here:
         try{
-            this.fase2 = new Fase2(this.Entrada.getText());
-            //this.fase2.getFase1AProcesar().hacerTablas(); //legado de la vieja interfaz
+            this.fase3 = new Fase3(this.Entrada.getText());
+            //this.fase3.getFase2AProcesar().getFase1AProcesar().hacerTablas(); //legado de la vieja interfaz
             this.tablaActual = 0;
-            this.TextAreaTabla.setText(this.fase2.getFase1AProcesar().getTablas().get(this.tablaActual).toString());
+            this.TextAreaTabla.setText(this.fase3.getFase2AProcesar().getFase1AProcesar().getTablas().get(this.tablaActual).toString());
             this.FuncionAnterior.setText(this.Entrada.getText().trim());
             this.NumeroTabla.setText("Tabla: " + (this.tablaActual+1));
-            this.CantidadTablas.setText("Cantidad de Tablas: " + this.fase2.getFase1AProcesar().getTablas().size());
+            this.CantidadTablas.setText("Cantidad de Tablas: " + this.fase3.getFase2AProcesar().getFase1AProcesar().getTablas().size());
         }catch(Exception exc){
             this.Error.setVisible(true);
             this.TextAreaTabla.setText("");
+            Logger.getLogger(JFrameStarterPack.class.getName()).log(Level.SEVERE, null, exc);
         }
     }//GEN-LAST:event_CreadorActionPerformed
 
     private void BotonTPrimosNoColapsadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTPrimosNoColapsadosActionPerformed
         // TODO add your handling code here:
-        if(this.fase2 != null){
+        if(this.fase3 != null){
             if(this.tablaActual != -2){
-                this.TextAreaTabla.setText(this.fase2.getTablaEsenciales().mostrarPrimosNoColapsadosString());
+                this.TextAreaTabla.setText(this.fase3.getFase2AProcesar().getTablaEsenciales().mostrarPrimosNoColapsadosString());
                 this.tablaActual = -2;
             }
             else{
                 this.tablaActual = 0;
-                this.TextAreaTabla.setText(this.fase2.getFase1AProcesar().getTablas().get(this.tablaActual).toString());
+                this.TextAreaTabla.setText(this.fase3.getFase2AProcesar().getFase1AProcesar().getTablas().get(this.tablaActual).toString());
             }
         }
     }//GEN-LAST:event_BotonTPrimosNoColapsadosActionPerformed
 
     private void DerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DerechaActionPerformed
         // TODO add your handling code here:
-        if(this.fase2 != null && this.tablaActual < this.fase2.getFase1AProcesar().getTablas().size()-1){
+        if(this.fase3 != null && this.tablaActual < this.fase3.getFase2AProcesar().getFase1AProcesar().getTablas().size()-1){
             this.tablaActual++;
-            this.TextAreaTabla.setText(this.fase2.getFase1AProcesar().getTablas().get(this.tablaActual).toString());
+            this.TextAreaTabla.setText(this.fase3.getFase2AProcesar().getFase1AProcesar().getTablas().get(this.tablaActual).toString());
             this.NumeroTabla.setText("Tabla: " + (this.tablaActual+1));
         }
     }//GEN-LAST:event_DerechaActionPerformed
 
     private void BotonTPrimosColapsadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTPrimosColapsadosActionPerformed
         // TODO add your handling code here:
-        if(this.fase2 != null){
+        if(this.fase3 != null){
             if(this.tablaActual != -1){
-                this.TextAreaTabla.setText(this.fase2.getTablaEsenciales().mostrarPrimosString());
+                this.TextAreaTabla.setText(this.fase3.getFase2AProcesar().getTablaEsenciales().mostrarPrimosString());
                 this.tablaActual = -1;
             }
             else{
                 this.tablaActual = 0;
-                this.TextAreaTabla.setText(this.fase2.getFase1AProcesar().getTablas().get(this.tablaActual).toString());
+                this.TextAreaTabla.setText(this.fase3.getFase2AProcesar().getFase1AProcesar().getTablas().get(this.tablaActual).toString());
             }
         }
     }//GEN-LAST:event_BotonTPrimosColapsadosActionPerformed
 
     private void IzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IzquierdaActionPerformed
         // TODO add your handling code here:
-        if(this.fase2 != null && this.tablaActual > 0){
+        if(this.fase3 != null && this.tablaActual > 0){
             this.tablaActual--;
-            this.TextAreaTabla.setText(this.fase2.getFase1AProcesar().getTablas().get(this.tablaActual).toString());
+            this.TextAreaTabla.setText(this.fase3.getFase2AProcesar().getFase1AProcesar().getTablas().get(this.tablaActual).toString());
             this.NumeroTabla.setText("Tabla: " + (this.tablaActual+1));
         }
     }//GEN-LAST:event_IzquierdaActionPerformed
@@ -767,6 +781,20 @@ public class JFrameStarterPack extends javax.swing.JFrame {
             this.Creador.doClick();
         }
     }//GEN-LAST:event_EntradaKeyTyped
+
+    private void botonResultadoFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonResultadoFinalActionPerformed
+        // TODO add your handling code here:
+        if(this.fase3 != null){
+            if(this.tablaActual != -3){
+                this.TextAreaTabla.setText(this.fase3.funcionResultante());
+                this.tablaActual = -1;
+            }
+            else{
+                this.tablaActual = 0;
+                this.TextAreaTabla.setText(this.fase3.getFase2AProcesar().getFase1AProcesar().getTablas().get(this.tablaActual).toString());
+            }
+        }
+    }//GEN-LAST:event_botonResultadoFinalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -825,6 +853,7 @@ public class JFrameStarterPack extends javax.swing.JFrame {
     private javax.swing.JPanel automatizerPanel;
     private javax.swing.JTextField baseNumero1;
     private javax.swing.JTextField baseNumero2;
+    private javax.swing.JButton botonResultadoFinal;
     private javax.swing.JButton calcular;
     private javax.swing.JButton ingresar;
     private javax.swing.JLabel jLabel1;
